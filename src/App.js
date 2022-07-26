@@ -1,56 +1,79 @@
-import './App.css';
-import { useState } from 'react';
-import Title from './Components/Title';
+import './App.css'
+import { useState } from 'react'
+import List from './Components/List'
 
+function App () {
+  const [kodersList, setKodersList] = useState([])
+  const [koderData, setKoderData] = useState({})
 
-function App() {
-  const [title, setTitle] = useState('Hola')
-  const [isLogged, setIsLogged] = useState(false)
-  const [lightGreen, setLightGreen] = useState(false)
-  const [lightYellow, setLightYellow] = useState(false)
-  const [lightRed, setLightRed] = useState(false)
-  // title = 'Hola'
-  // const setTitle = (valor) => {
-  // title = valor
-  //}
-
+  /*{
+    nombre:
+    generacion:
+    email
+  }*/
   const inputHandler = event => {
-    setTitle(event.target.value)
-  }
-  const loginHandler = events => {
-    setIsLogged(true)
-  }
-  const logoutHandler = events => {
-    setIsLogged(false)
+    let property = event.target.name
+    let value = event.target.value
+    console.log(`property: ${property} , value: ${value}`)
+    setKoderData({ ...koderData, [property]: value })
   }
 
-
-  const colorGreenHandler = events => {
-    setLightGreen('bg-success')
-  }
-  const colorYellowHandler = events => {
-    setLightYellow('bg-warning')
-  }
-  const colorRedHandler = events => {
-    setLightRed('bg-success')
+  const guardarKoder = () => {
+    setKodersList([...kodersList, koderData])
   }
   return (
-    <div className='App'> 
-    <div>
-      <button className='btn btn-success'></button>
-      <button className='btn btn-warning'></button>
-      <button className='btn btn-danger'></button>
-      <div className='circle' ></div>
-    </div>
-
-      {!isLogged && <button className='btn btn-success' onClick={loginHandler}>Login</button>}
-      {isLogged && <button className='btn btn-warning' onClick={logoutHandler}>Sign out</button>}
-    
-    <input type='text' onChange={inputHandler}/>
-    <Title texto={title}/>    
+    <div className='App'>
+      <div className='container-fluid'>
+        <div className='row'>
+          <div className='col-12 col-md-6'>
+            <form action='' className='bg-dark text-white p-3 border rounded'>
+              <div className='form-group'>
+                <label htmlFor=''>Nombre:</label>
+                <input
+                  type='text'
+                  className='form-control'
+                  name='nombre'
+                  onChange={inputHandler}
+                />
+              </div>
+              <div className='form-group'>
+                <label htmlFor=''>Correo</label>
+                <input
+                  type='text'
+                  className='form-control'
+                  name='email'
+                  onChange={inputHandler}
+                />
+              </div>
+              <div className='form-group'>
+                <label htmlFor=''>Generación</label>
+                <input
+                  type='text'
+                  className='form-control'
+                  name='generacion'
+                  onChange={inputHandler}
+                />
+              </div>
+              <button
+                className='btn btn-success mt-3 ms-auto'
+                onClick={guardarKoder}
+                type='button'
+              >
+                Guardar Koder
+              </button>
+            </form>
+          </div>
+          <div className='col-12 col-md-6 mt-3'>
+            {!kodersList.length ? (
+              <h2>Registra un koder</h2>
+            ) : (
+              <List kodersList={kodersList} />
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   )
-  }
-
+}
 
 export default App

@@ -1,13 +1,12 @@
-import ProductCard from "../ProductCard"
+import KoderCard from '../KoderCard'
 
 const List = props => {
-  const { data } = props
-  //arreglo con la data que queremos enlistar, la tenemos que mandar a app.js como prop
+  const { kodersList } = props
   return (
-    <div className='row row-cols-1 row-cols-md-4 g-4'>
-      { data.map( producto => (
-        <ProductCard listaProductos={producto}/>
-        ))}
+    <div className='row row-cols-1 row-cols-md-3 g-4'>
+      {kodersList.map((koder, index) => {
+        return <KoderCard koder={koder} key={index} />
+      })}
     </div>
   )
 }
