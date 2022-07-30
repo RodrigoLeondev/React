@@ -4,7 +4,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } f
 import { Link, Routes, Route } from 'react-router-dom'
 import Pagina2 from './Pages/Pagina2';
 import PaginaCard from './Pages/PaginaCard';
-import OtraPagina from './Pages/Otra_pagina';
+import Products from './Pages/Products';
 
 function App () {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,21 +17,22 @@ function App () {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className='me-auto' navbar>
-            <NavItem>
-              <Link to='/pagina-card' className='nav-link'>
-                Páginas de cards
+          <NavItem>
+              <Link to='/productos' className='nav-link'>
+                Productos en venta
               </Link>
             </NavItem>
             <NavItem>
-              <Link to='/pagina-2' className='nav-link'>
-                Segunda página
+              <Link to='/tus-compras' className='nav-link'>
+                Carrito de compras
               </Link>
             </NavItem>
             <NavItem>
-              <Link to='/otra-pagina' className='nav-link'>
-                Página de dibujitos
+              <Link to='/tu-historial-de-compra' className='nav-link'>
+                Estas son tus compras del día de hoy
               </Link>
             </NavItem>
+            
           </Nav>
         </Collapse>
       </Navbar>
@@ -40,9 +41,9 @@ function App () {
           <div className='col-6'>
             <Routes>
               <Route path='/' element={<h1>Página de prueba</h1>} />
-              <Route path='pagina-card' element={<PaginaCard />} />
-              <Route path='pagina-2' element={<Pagina2 />} />
-              <Route path='otra-pagina' element={<OtraPagina />} />
+              <Route path='productos' element={<Products />} />
+              <Route path='tus-compras' element={<PaginaCard />} />
+              <Route path='tu-historial-de-compra' element={<Pagina2 />} /> 
             </Routes>
           </div>
         </div>

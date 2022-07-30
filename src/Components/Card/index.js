@@ -1,4 +1,7 @@
-const Card = () => {
+import { CardBody, CardTitle, CardText, img, Button, Card } from "reactstrap"
+
+const CardCustom = () => {
+
     return(
        <Card
   color="warning"
@@ -8,8 +11,7 @@ const Card = () => {
 >
   <img
     alt="Card image"
-    src="https://www.facebook.com/gatitos.qctd/"
-  />
+    src="https://www.facebook.com/gatitos.qctd/"/>
   <CardBody>
     <CardTitle tag="h5">
       Gatitos
@@ -24,4 +26,4 @@ const Card = () => {
 </Card> 
     )
 }
-export default Card
+export default CardCustom
