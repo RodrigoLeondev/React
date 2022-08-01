@@ -22,7 +22,7 @@ const Products = () => {
 
             return (
               <div className='col' key={productoKey}>
-                <Link>
+                <Link to='/'>
                   <div className='card'>
                     <img src={imagen} className='card-img-top' alt='...' />
                     <div className='card-body'>
