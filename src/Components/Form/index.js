@@ -44,6 +44,7 @@ function Form () {
                   id = 'website'
                   className='form-control'
                   name='name'
+                  placeholder='URL'
                   {...register('imagen', { required: true })}
                 />
                 {errors.imagen && errors.imagen.type === 'required' && (
@@ -78,6 +79,7 @@ function Form () {
                   type='text'
                   className='form-control'
                   name='name'
+                  placeholder='Producto'
                   {...register('descripcion', { required: true, maxLength: 100})}
                 />
                 {errors.descripcion && errors.descripcion.type === 'required' && (
@@ -97,6 +99,7 @@ function Form () {
                   type='number'
                   className='form-control'
                   name='name'
+                  placeholder='Precio'
                   {...register('precio', { required: true})}
                   />
                   {errors.precio && errors.precio.type === 'required' && (
@@ -105,7 +108,6 @@ function Form () {
                     </div>
                   )}   
               </div>
-              /**asignar alerta onClick de exito al subir el producto  */
               <button type='submit' className='btn btn-primary'> 
                 Guardar Producto
               </button>

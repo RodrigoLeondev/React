@@ -2,13 +2,20 @@ import { useState } from 'react'
 import './App.css'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem} from 'reactstrap';
 import { Link, Routes, Route } from 'react-router-dom'
-import PaginaCard from './Pages/PaginaCard';
+import PaginaCard from './Pages/Carrito';
 import Products from './Pages/Products';
 import PaginaForm from './Pages/Form'
+import Carrito from './Components/Carrito';
 
 function App () {
   const [isOpen, setIsOpen] = useState(false)
+  const [shoppingCart, setShoppingCart] = useState([])
   const toggle = () => setIsOpen(!isOpen)
+
+
+  const addToCart = (product) => {
+    setShoppingCart([...shoppingCart, product])
+  }
 
   return (
     <div className='App'>
@@ -23,7 +30,7 @@ function App () {
               </Link>
             </NavItem>
             <NavItem>
-              <Link to='/tus-compras' className='nav-link'>
+              <Link to='/carrito-de-compras' className='nav-link'>
                 Carrito de compras
               </Link>
             </NavItem>
@@ -45,8 +52,8 @@ function App () {
           <div className='col-6'>
             <Routes>
               <Route path='/' element={<h1>Página de prueba</h1>} />
-              <Route path='productos' element={<Products />} />
-              <Route path='tus-compras' element={<PaginaCard />} />
+              <Route path='productos' element={<Products addHandler={addToCart} />} />
+              <Route path='carrito-de-compras' element={<Carrito />} />
               <Route path='agregar-producto' element={<PaginaForm />} /> 
             </Routes>
           </div>
